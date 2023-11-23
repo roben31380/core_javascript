@@ -1,3 +1,3 @@
-console.log(navigator.language);
+alert('hi');
 
-const a = 'ya';
+console.log('hii');
