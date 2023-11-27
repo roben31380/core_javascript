@@ -24,8 +24,18 @@ const num = new Number(123);
 console.log(num);
 // 5. 길이에 제약이 없는 정수(예: 암호 관련 작업에서 사용)
 // 6. 참(true, yes) 또는 거짓(false, no)
+
+const isActive = false;
+console.log(isActive);
 // 7. 데이터 컬렉션(collection) 또는 복잡한 엔티티(entity)
+
+const obj = {};
+console.log(typeof obj);
+
 // 8. 고유한 식별자(unique identifier)
+
+const unique = Symbol('uuid');
+console.log(unique);
 
 /* typeof 연산자의 2가지 사용법 ---------------------------------------------- */
 
@@ -36,8 +46,28 @@ console.log(num);
 
 // Object
 
+const user = {
+  name: 'kina',
+  age: 25,
+  sayHi: function () {
+    console.log('hello~');
+  },
+};
+
+user.major = 'bio';
+
+console.log(user);
 // Array
 
+const arr = [10, 100, 1000, 1, 2, 3];
+
 // function
+function 붕어빵(fill) {
+  return `냠냠 ${fill}붕어빵`;
+}
+
+const a = '붕어빵';
+
+console.log('붕어빵');
 
 // this
