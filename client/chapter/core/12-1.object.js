@@ -60,46 +60,37 @@ authUser = {
 /* console.log(authUser.uid);
 console.log(authUser['uid']);
 console.log(authUser.name);
-console.log(authUser.['name']);
+console.log(authUser['name']);
 console.log(authUser.email);
-console.log(authUser.['email']);
+console.log(authUser['email']);
 console.log(authUser.isSingIn);
-console.log(authUser.['isSingIn']);
+console.log(authUser['isSingIn']);
 console.log(authUser.permission);
-console.log(authUser.['permission']);
+console.log(authUser['permission']);
  */
 
-Object.prototype.SIGN = true;
+authUser['PUR'] = true;
+console.log(authUser.PUR);
+
+// Object.prototype.SIGN = true;
 
 for (let key in authUser) {
   if ({}.hasOwnProperty.call(authUser, key)) {
-    console.log(key);
-    console.log(authUser[key]);
+    console.log('2.' + key);
+    console.log('3.' + authUser[key]);
   }
 }
 
 // key를 모아놓은 배열
 let keyList = Object.keys(authUser);
-// console.log(keyList);
+console.log('4.' + keyList);
 // value를 모아놓은 배열
 let valueList = Object.values(authUser);
-// console.log(valueList);
-
-// 이전 방법
-function getPropertiesList(object) {
-  let result = [];
-
-  for (let key in object) {
-    if (Object.prototype.hasOwnProperty.call(object, key)) {
-      result.push(key);
-    }
-  }
-  return result;
-}
+console.log('5.' + valueList);
 
 const result = getPropertiesList(authUser);
 
-// 계산된 프로퍼티 (computed property)
+// 계산된 프로퍼티 (computed property) 프로퍼티의 key를 표현식을 통해 동적으로 지정하는 문법
 let calculateProperty = 'tel'; // phone | tel
 
 function createUser(name, age, phone = '010-0000-0000') {
@@ -113,16 +104,28 @@ function createUser(name, age, phone = '010-0000-0000') {
 const user = createUser('tiger', '35');
 
 // 프로퍼티 포함 여부 확인
+// 이전 방법
+function getPropertiesList(object) {
+  let result = [];
 
-// 프로퍼티 나열
+  for (let key in object) {
+    if (Object.prototype.hasOwnProperty.call(object, key)) {
+      result.push(key);
+    }
+  }
+  return result;
+}
 
-// 프로퍼티 제거(remove = null) or 삭제(delete)
-function isObject(data) {
+// 현재 isObject의 toString
+/* function isObject(data) {
   return (
     Object.prototype.toString.call(data).slice(8, -1).toLowerCase() === 'object'
   );
-}
+} */
 
+// 프로퍼티 나열 Object.entries()
+
+// 프로퍼티 제거(remove = null) or 삭제(delete)
 function removeProperty(object, key) {
   if (isObject(object)) {
     object[key] = null;
@@ -137,17 +140,17 @@ function deleteProperty(object, key) {
 //deleteProperty(authUser,'name') // delete authUser.name
 
 // 단축 프로퍼티
-let name = '선범';
-let email = 'seonbeom2@euid.dev';
-let authorization = 'Lv. 99';
-let isLogin = true;
+// let name = '선범';
+// let email = 'seonbeom2@euid.dev';
+// let authorization = 'Lv. 99';
+// let isLogin = true;
 
-const student = {
-  name,
-  email,
-  authorization,
-  isLogin: false,
-};
+// const student = {
+//   name,
+//   email,
+//   authorization,
+//   isLogin: false,
+// };
 // 프로퍼티 이름 제한
 // 예약어: class, if, switch, for, while, ...
 
@@ -170,13 +173,13 @@ const arr = [10, 100, 1000, 10000];
 
 const [a1, ...d] = arr;
 
-console.log(d);
+console.log(a1);
 
 for (let [key, value] of Object.entries(authUser)) {
   // let key = keyValue[0];
   // let value = keyValue[1];
 
-  console.log(key);
+  console.log('6.' + key);
 }
 
 const [first, second, third] = document.querySelectorAll('span'); // NodeList
@@ -190,8 +193,8 @@ const salaries = {
   b: 200,
   c: 300,
 };
-let total = 0;
 
+let total = 0;
 for (let [key, value] of Object.entries(salaries)) {
   total += value;
 }
@@ -209,8 +212,8 @@ const salaries1 = {
 
 const { a: aa, b: bb, c: cc, d: dd = 500 } = salaries1;
 
-console.log(aa);
-console.log(dd);
+// console.log(aa);
+// console.log(dd);
 
 const test = {
   testA: {
@@ -223,7 +226,7 @@ const test = {
 };
 
 const { value: testValue } = test.testA.testB.testC;
-console.log(testValue);
+// console.log(testValue);
 
 function createUserData(obj) {
   console.log(obj);
@@ -234,12 +237,6 @@ function createUserData(obj) {
     job,
   };
 }
-
-createUserData({
-  userName: 'tiger',
-  age: 40,
-  job: 'developer',
-});
 
 const { userName, age, job } = {
   userName: 'tiger',
