@@ -149,3 +149,34 @@ function sumSalaries(department) {
     return sum;
   }
 }
+
+function isObject() {}
+
+function isArray(data) {
+  return Array.isArray(data);
+}
+
+function print(data) {
+  if (typeof data === 'object') {
+    for (let keyValue of Object.entries(data)) {
+      let key = keyValue[0];
+      let value = keyValue[1];
+
+      if (typeof value === 'object' || isArray(value)) {
+        print(value);
+      } else {
+        console.log(`key : ${key}, value : ${value}`);
+      }
+    }
+  }
+
+  if (isArray(data)) {
+    data.forEach((value, index) => {
+      if (typeof value === 'object' || isArray(value)) {
+        print(value);
+      } else {
+        console.log(`key : ${index}, value : ${value}`);
+      }
+    });
+  }
+}
