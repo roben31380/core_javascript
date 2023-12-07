@@ -11,7 +11,7 @@ const arraylike = {
   length: 3,
 };
 
-// iterable 반복가능한, for of 로 순환이 가능 -> [symbol.iterator]{...}
+//* iterable 반복가능한, for of 로 순환이 가능 -> [symbol.iterator]{...}
 
 const str = '유사배열';
 for (let value of str) {

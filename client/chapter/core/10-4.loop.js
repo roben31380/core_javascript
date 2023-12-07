@@ -1,5 +1,5 @@
 /* ---------------- */
-/* For In Loop      */
+/* // *For In Loop      */
 /* ---------------- */
 
 const javaScript = {
@@ -9,11 +9,11 @@ const javaScript = {
   currentVersion: 2023,
 };
 
-// key in javaScript
+// & key in javaScript
 const key = 'creator';
 // console.log(key in javaScript);
 
-// 객체의 속성(property) 포함 여부 확인 방법
+// & 객체의 속성(property) 포함 여부 확인 방법
 // - 모든 객체가 사용 가능하도록 속성이 확장되었을 때 포함 여부 결과는?
 
 // 객체 자신의 속성인지 확인하는 방법
