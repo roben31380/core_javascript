@@ -7,12 +7,12 @@
 //   즉, 클로저에 정의된 함수는 그것이 작성된 환경을 '기억'합니다.
 //^ 함수는 태어난 환경을 기억한다.
 
-function sum(a, b) {
+/* function sum(a, b) {
   return a + b;
 }
 
 const value = sum; // 함수를 실행하지 않고 넘김
-value();
+value(); */
 
 function first() {
   let x = 10;
@@ -22,17 +22,11 @@ function first() {
   }
   return second;
 }
-first();
-first()();
+// first();
+// first()();
 
 const result = first();
 result(); // 접근환경을 만들어서 가능하도록,
-
-function counter() {
-  let count = 0;
-
-  console.log(++count);
-}
 
 // 모든 함수에는 실행 컨텍스트가 있습니다. 실행 컨텍스트는 해당 함수 내의 변수와
 // 해당 부모 환경에 대한 참조를 의미하는 환경으로 구성됩니다. 상위 환경에 대한 참조는

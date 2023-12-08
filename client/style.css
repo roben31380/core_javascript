@@ -3,4 +3,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
 }
