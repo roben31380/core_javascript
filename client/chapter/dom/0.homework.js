@@ -1,11 +1,14 @@
 //* querySelector
 const button = document.querySelector('.menu-button');
 const menu = document.querySelector('.menu');
+const input = document.querySelector('.input');
 
 //* eventlistner
 // event 사용자가 하는 행동?
+//^ EVENT: click, input
 // Node.addevent..
 // html이 우선,
+//TODO event에 들어가는 함수는 handle 붙여주기
 
 function handleMenu(e) {
   e.preventDefault();
@@ -23,6 +26,14 @@ function handleMenu(e) {
 
 button.addEventListener('click', handleMenu);
 
+input.addEventListener('input', handleInput);
+function handleInput() {
+  console.log();
+
+  if (this.value === 'hello') {
+    console.log('success');
+  }
+}
 //* classList
 
 //* preventDefault
