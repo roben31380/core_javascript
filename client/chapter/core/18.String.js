@@ -81,5 +81,5 @@ let toLowerCase;
 let toUpperCase;
 
 // 텍스트 이름 변환 유틸리티 함수
-let toCamelCase;
-let toPascalCase;
+// let toCamelCase;
+// let toPascalCase;
