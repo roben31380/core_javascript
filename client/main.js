@@ -53,11 +53,13 @@ function handleSubmit(e) {
 
 function handleCopy() {
   const text = result.textContent;
-  console.log(text);
+  // console.log(text);
   // promise 여서 then 사용가능
-  copy(text).then(() => {
-    showAlert('.alert-success', '클립보드복사완료');
-  });
+  if (nameField.value) {
+    copy(text).then(() => {
+      showAlert('.alert-success', '클립보드복사완료');
+    });
+  }
 }
 
 submit.addEventListener('click', handleSubmit);
