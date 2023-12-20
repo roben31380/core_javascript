@@ -1,3 +1,7 @@
-console.log(navigator.language);
+import { insertLast, xhrPromise } from './lib/index.js';
 
-const a = 'ya';
+xhrPromise.get('https://jsonplaceholder.typicode.com/users').then((res) => {
+  res.forEach((item) => {
+    insertLast(document.body, `<div>${item.name}</div>`);
+  });
+});
