@@ -144,4 +144,4 @@ async function getDataA() {
   console.log(data);
 }
 
-getDataA();
+// getDataA();

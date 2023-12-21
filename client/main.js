@@ -1,24 +1,31 @@
 import {
   changeColor,
-  getNode,
+  getNode as $,
   renderSpinner,
   renderUserCard,
   tiger,
   insertLast,
   delayP,
   renderEmptyCard,
+  clearContents,
 } from './lib/index.js';
+
 //* phase -1
 //^ 1. user data fetch
-const userCardInner = getNode('.user-card-inner');
-const END_POINT = 'https://jsonplaceholder.typicode.com/users';
+
+const userCardInner = $('.user-card-inner');
+const END_POINT = 'http://localhost:3000/users';
+const createBtn = $('.create');
+const createButton = $('.create');
+const cancelButton = $('.cancel');
+const doneButton = $('.done');
 
 /* global gsap */
 async function renderUserList() {
   renderSpinner(userCardInner);
   try {
     await delayP(100);
-    getNode('.loading-spinner').remove();
+    $('.loading-spinner').remove();
 
     const response = await tiger.get(END_POINT);
     const userData = response.data;
@@ -42,9 +49,44 @@ function handleDelete(e) {
 
   if (!article || !button) return;
   const id = article.dataset.index.slice(5);
-  tiger.delete(`${END_POINT}/${id}`);
+
+  tiger.delete(`${END_POINT}/${id}`).then(() => {
+    clearContents(userCardInner);
+    renderUserList();
+  });
 }
 
 renderUserList();
 
-userCardInner.addEventListener('click', handleDelete);
+function handleCreate() {
+  gsap.to('.pop', { autoAlpha: 1 });
+}
+
+function handleCancel(e) {
+  e.stopPropagation();
+  gsap.to('.pop', { autoAlpha: 0 });
+}
+
+function handleDone(e) {
+  e.preventDefault();
+
+  const name = $('#nameField').value;
+  const email = $('#emailField').value;
+  const website = $('#siteField').value;
+
+  const obj = {
+    name,
+    email,
+    website,
+  };
+
+  tiger.post(END_POINT, obj).then(() => {
+    clearContents(userCardInner);
+    renderUserList();
+    gsap.to('.pop', { autoAlpha: 0 });
+  });
+}
+
+createButton.addEventListener('click', handleCreate);
+cancelButton.addEventListener('click', handleCancel);
+doneButton.addEventListener('click', handleDone);
