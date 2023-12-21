@@ -31,8 +31,14 @@ export function getStorage(key) {
   });
 }
 
+// export function getStorage(key) {
+//   if (isString(key)) {
+//     JSON.parse(storage.getItem(key));
+//   }
+// }
+
 export function deleteStorage(key) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     !key ? storage.clear() : storage.removeItem(key);
     resolve();
   });
