@@ -36,7 +36,7 @@ const user = await tiger({
   //   'Access-Control-Allow-Origin': '*',
 });
 
-console.log(user.data);
+// console.log(user.data);
 
 tiger.get = (url, options) => {
   return tiger({

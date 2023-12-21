@@ -1,7 +1,8 @@
-import { getNode, insertLast } from '../dom/getNode.js';
+import { getNodes, getNode } from '../dom/getNode.js';
 import { isNumber, isObject } from './typeOf.js';
 // 이상원, 박수양, 조윤주, 정현주, 박주현
 
+getNodes;
 function delay(callback, timeout = 1000) {
   setTimeout(callback, timeout);
 }
@@ -86,7 +87,7 @@ const value = await delayA('나');
 //   console.log(res);
 // })
 
-console.log(value);
+// console.log(value);
 
 function 라면끓이기() {
   // delayP({data:'물'})
@@ -111,7 +112,7 @@ function 라면끓이기() {
   // console.log('그릇에담기');
 }
 
-const 물 = await delayP({ data: '물' });
+/* const 물 = await delayP({ data: '물' });
 console.log(물);
 
 const 스프 = await delayP({ data: '스프' });
@@ -121,19 +122,19 @@ const 면 = await delayP({ data: '면' });
 console.log(면);
 
 const 그릇 = await delayP({ data: '그릇' });
-console.log(그릇);
+console.log(그릇); */
 
 async function getData() {
   const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/15');
 
-  console.log(data);
+  // console.log(data);
 
-  insertLast(
-    document.body,
-    `<img src="${data.sprites['front_default']}" alt="독침붕" />`
-  );
+  // insertLast(
+  //   document.body,
+  //   `<img src="${data.sprites['front_default']}" alt="독침붕" />`
+  // );
 
-  console.log(data.sprites['front_default']);
+  // console.log(data.sprites['front_default']);
 }
 
 const END_POINT = 'https://pokeapi.co/api/v2/pokemon/15';

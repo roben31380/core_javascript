@@ -1,24 +1,50 @@
-import { insertLast, tiger, xhrPromise } from './lib/index.js';
+import {
+  changeColor,
+  getNode,
+  renderSpinner,
+  renderUserCard,
+  tiger,
+  insertLast,
+  delayP,
+  renderEmptyCard,
+} from './lib/index.js';
+//* phase -1
+//^ 1. user data fetch
+const userCardInner = getNode('.user-card-inner');
+const END_POINT = 'https://jsonplaceholder.typicode.com/users';
 
-xhrPromise.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-  res.forEach((item) => {
-    insertLast(document.body, `<div>${item.name}</div>`);
-  });
-});
+/* global gsap */
+async function renderUserList() {
+  renderSpinner(userCardInner);
+  try {
+    await delayP(100);
+    getNode('.loading-spinner').remove();
 
-const TEST_DATA = 'https://jsonplaceholder.typicode.com/users'
+    const response = await tiger.get(END_POINT);
+    const userData = response.data;
 
-const response =
- fetch(TEST_DATA) {}
+    userData.forEach((data) => renderUserCard(userCardInner, data));
+    changeColor('.user-card');
 
-
-
-
-const END_POINT = 'https://pokeapi.co/api/v2/pokemon/15';
-
-async function getDataA() {
-  let data = await fetch(END_POINT);
-  console.log(await data);
+    gsap.from('.user-card', {
+      x: 100,
+      opacity: 0,
+      stagger: 0.1,
+    });
+  } catch (err) {
+    renderEmptyCard(userCardInner);
+  }
 }
 
-getDataA();
+function handleDelete(e) {
+  const button = e.target.closest('button');
+  const article = e.target.closest('article');
+
+  if (!article || !button) return;
+  const id = article.dataset.index.slice(5);
+  tiger.delete(`${END_POINT}/${id}`);
+}
+
+renderUserList();
+
+userCardInner.addEventListener('click', handleDelete);
