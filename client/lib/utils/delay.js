@@ -136,4 +136,11 @@ async function getData() {
   console.log(data.sprites['front_default']);
 }
 
-getData();
+const END_POINT = 'https://pokeapi.co/api/v2/pokemon/15';
+
+async function getDataA() {
+  let data = await fetch(END_POINT);
+  console.log(data);
+}
+
+getDataA();
